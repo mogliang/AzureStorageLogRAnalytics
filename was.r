@@ -1,3 +1,5 @@
+# Load storage log into frame
+# ex: readStorageLog('meta2.csv','d:\storagelogs\')
 readStorageLog=function(metapath,datapath)
 {
 	#http://www.biosino.org/R/R-doc/R-data_cn/Variations-on-read_002etable.html
@@ -28,6 +30,7 @@ readStorageLog=function(metapath,datapath)
 	az
 }
 
+# get average latency from each clientip 
 AnalyzeIP=function(az,rnum){
 	az$clientip=as.factor(sub(':.*','',az[,'requestoripaddress']))
 
@@ -67,6 +70,7 @@ AnalyzeIP=function(az,rnum){
 	list(dist=r0,e2elatency=r1,serlatency=r2,optype=m3)
 }
 
+# get latency for each objectkey
 AnalyzeObjectKey=function(az,rnum){
 	#az$requestedobjectkey=as.factor(az$requestedobjectkey)
 	r0=summary(az$requestedobjectkey)
